@@ -29,7 +29,7 @@ class RingBufferTests(unittest.TestCase):
         self.buffer.append('e')
         self.buffer.append('f')
         self.assertEqual(self.buffer.get(), ['f', 'b', 'c', 'd', 'e'])
-    '''
+
     def test_adding_many_elements_to_full_buffer(self):
         self.buffer.append('a')
         self.buffer.append('b')
@@ -41,12 +41,12 @@ class RingBufferTests(unittest.TestCase):
         self.buffer.append('h')
         self.buffer.append('i')
         self.assertEqual(self.buffer.get(), ['f', 'g', 'h', 'i', 'e'])
-
     '''
     def test_adding_50_elements_to_buffer(self):
         for i in range(50):
             self.buffer.append(i)
 
         self.assertEqual(self.buffer.get(), [45, 46, 47, 48, 49])
+    '''
 if __name__ == '__main__':
     unittest.main()

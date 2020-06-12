@@ -10,27 +10,23 @@ class RingBuffer:
         if self.capacity > 0:
             self.ring.append(item)
             self.capacity -= 1
+        
         else:
-            if type(item) == str:
-                self.ring.pop(0)
-                self.ring.insert(0, item)
-
-                # for x in self.ring:
-                #     self.tracker = x
-                #     if chr(ord(item) -1) == self.tracker:
-                #         self.ring.remove(x)
-
+            if self.tracker == 5:
+                self.tracker = 0
+                self.ring.pop(self.tracker)
+                print(self.ring)
+                self.ring.insert(self.tracker, item)
+                print(self.ring)
+                print("fired if statement")
             else:
-                test = item - 1
-                for x in self.ring:
-                    if test == self.ring.index(x):
-                        print(self.ring)
-                        self.ring.remove(x)
-                        print(self.ring)
-                        position = self.ring.index(x)
-                        self.ring.insert(x, item)                        
-                    else:
-                        pass
+                self.ring.pop(self.tracker)
+                print(self.ring)
+                self.ring.insert(self.tracker, item)
+                print(self.ring)
+                self.tracker += 1
+                print("fired else statement")
+
 
 
     def get(self):
